@@ -19,13 +19,19 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh 'mvn exec:java -Dxec.mainClass="com.example.App"'  // Run unit tests
+                sh 'mvn test'  // Run unit tests
             }
         }
 
         
         
-      
+       
+        stage('Run Application') {
+            steps {
+                // Start the JAR application
+                sh 'java -jar target/2023MavenSeleniumApp-1.0-SNAPSHOT.jar'
+            }
+        }
 
         
     }
